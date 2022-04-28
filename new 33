@@ -1,0 +1,68 @@
+create database Employee_Payroll;
+show databases;
+use Employee_Payroll;
+create database student;
+create database Employee_Payroll_Service; 
+create table employee_payroll(ID int not null auto_increment, Name varchar(30) not null,
+ Salary double not null, Start Date not null, primary key(id));
+
+ insert into employee_payroll(Name, Salary,Start) values ('purbi', 5000000.00, '2020-08-02'),
+ ('rubi', 20000000.00, '2021-04-12'),('suchi', 42500000.00, '2020-12-12');
+select * from employee_payroll;
+select salary from employee_payroll where name = 'purbi';
+select salary from employee_payroll where Start between cast('2021-01-01'
+ as date) and date (now());
+ alter table employee_payroll add gender char(1) after Name;
+ desc employee_payroll;
+ select * from employee_payroll;
+ update employee_payroll set gender = 'F' where id = 1;
+ update employee_payroll set gender = 'F' where id = 2;
+ select sum(Salary) as SumOfSalary from employee_payroll;
+ select sum(Salary) as SumOfSalary from employee_payroll where gender = 'F' group by gender;
+ select avg(Salary) as AverageOFSalary from employee_payroll;
+ select max(Salary) as MaximumOfSalary from employee_payroll;
+ select count(Salary) as CountOfSalary from employee_payroll;
+  alter table employee_payroll add Phone_no int (10) after start;
+  alter table employee_payroll add Address varchar(255) after phone_no;
+ alter table employee_payroll add Department varchar(25) after address;
+  update employee_payroll set department = "BITM" where ID = 1;
+  update employee_payroll set department = "BCA" where ID = 2;
+  update employee_payroll set department = "BBA" where ID = 3;
+  update employee_payroll set Basic_pay = 200000 where name = "rubi";
+  alter table employee_payroll add Basic_Pay int(7) after department;
+alter table employee_payroll add Basic_Pay int(7) after department;
+update employee_payroll set Basic_pay = 200000 where name = "rubi";
+update employee_payroll set Basic_pay = 600000 where name = "purbi";
+ update employee_payroll set Basic_pay = 100000 where name = "suchi";
+ alter table employee_payroll add Deduction int(5) after Basic_pay;
+ alter table employee_payroll add Taxable_pay int(5) after Deduction;
+  alter table employee_payroll add Income_pay int(5) after Taxable_pay;
+  alter table employee_payroll add Net_pay int(5) after Income_pay;
+ insert into employee_payroll (Name,gender,Salary,Start,phone_no,address,department,
+ Basic_pay,Deduction,Taxable_pay,Income_pay,Net_pay) values('purbi','F',200000,'2021-09-03',
+ 914400230,'cuttack','IT',349499,474884,388393,283837,77838378);
+  select * from employee_payroll where name = "purbi";
+   CREATE TABLE Department ( department varchar(200) NOT NULL, PRIMARY KEY (department) );
+INSERT INTO Department ( department ) VALUES ('Civil'),('IT');
+SELECT * FROM Department;
+ create table Employee( id int, compID int, PhoneNumbe BIGINT(13), Address varchar(25), gender char(1),
+	PRIMARY KEY (id));
+     INSERT INTO Employee (id, compID, PhoneNumbe, Address, gender) VALUES ( 1, 10, 7775827779, 'banglore', 'F'),
+	(2, 11, 7775828889, 'chennai', 'M');
+  select * from Employee;
+  CREATE TABLE Emp_Department (empID int, Depart varchar(250) NOT NULL, FOREIGN KEY (empID) REFERENCES Employee (id),
+	FOREIGN KEY (Depart) REFERENCES Department (department), PRIMARY KEY (empID, Depart));
+    drop table Emp_Department;
+    CREATE TABLE Employee_Department (empID int, Depart varchar(150) NOT NULL, FOREIGN KEY (empID) REFERENCES Employee (id),
+	FOREIGN KEY (Depart) REFERENCES Department (department), PRIMARY KEY (empID, Depart));
+  desc Employee_Department ;
+  insert into Employee_Department(empID, Depart)VALUES (1, 'IT');
+  insert into Employee_Department(empID, Depart)VALUES (2, 'Civil');
+   insert into Employee_Department(empID, Depart)VALUES (1, 'Civil');
+    insert into Employee_Department(empID, Depart)VALUES (2, 'IT');
+    select * from Employee_Department;
+     SELECT * FROM Employee_Department WHERE empID = 1;
+     SELECT * FROM Department WHERE department = 'IT';
+     show databases;
+     use Sample;
+create database Sample;
